@@ -6,7 +6,7 @@ const jsonHeaders = {
 };
 
 const MAX_FIELD_LENGTH = 120;
-const MAX_MESSAGE_LENGTH = 1800;
+const MAX_MESSAGE_LENGTH = 1024;
 
 const truncate = (value, limit) => {
   if (typeof value !== "string") {
