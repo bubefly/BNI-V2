@@ -6,6 +6,10 @@ const revealItems = document.querySelectorAll(".reveal");
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
 
+if (window.location.hash) {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
 if (logo && brandMark) {
   logo.addEventListener("load", () => {
     brandMark.classList.add("logo-ready");
@@ -68,7 +72,7 @@ if (contactForm && formStatus) {
     };
 
     if (!payload.name || !payload.contact || !payload.requestType || !payload.message) {
-      formStatus.textContent = "Completez tous les champs avant transmission.";
+      formStatus.textContent = "Complétez tous les champs avant transmission.";
       return;
     }
 
@@ -94,11 +98,11 @@ if (contactForm && formStatus) {
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result.error || "Echec lors de l'envoi.");
+        throw new Error(result.error || "Échec lors de l'envoi.");
       }
 
       contactForm.reset();
-      formStatus.textContent = "Demande envoyee. La cellule BNI revient vers vous rapidement.";
+      formStatus.textContent = "Demande envoyée. La cellule BNI revient vers vous rapidement.";
     } catch (error) {
       formStatus.textContent =
         error instanceof Error
