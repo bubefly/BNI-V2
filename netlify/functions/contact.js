@@ -12,6 +12,7 @@ const MIN_FORM_ELAPSED_MS = 1200;
 const RATE_LIMIT_WINDOW_MS = Number(process.env.CONTACT_RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000);
 const RATE_LIMIT_MAX = Number(process.env.CONTACT_RATE_LIMIT_MAX || 5);
 const REQUEST_TYPES = new Set(["Rendez-vous", "Question", "Mise en relation", "Autre"]);
+const DISCORD_HOSTS = new Set(["discord.com", "discordapp.com", "canary.discord.com", "ptb.discord.com"]);
 const rateLimitStore = new Map();
 
 const getHeader = (headers, name) => {
@@ -109,8 +110,11 @@ const isRateLimited = (clientKey) => {
 const isDiscordWebhookUrl = (webhookUrl) => {
   try {
     const parsedUrl = new URL(webhookUrl);
-    const isDiscordHost = parsedUrl.hostname === "discord.com" || parsedUrl.hostname === "discordapp.com";
-    return parsedUrl.protocol === "https:" && isDiscordHost && parsedUrl.pathname.startsWith("/api/webhooks/");
+    return (
+      parsedUrl.protocol === "https:" &&
+      DISCORD_HOSTS.has(parsedUrl.hostname) &&
+      parsedUrl.pathname.startsWith("/api/webhooks/")
+    );
   } catch (error) {
     return false;
   }
