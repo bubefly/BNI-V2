@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "serve": "serve public",
+    "validate": "html-validate public/index.html",
+    "build:images": "node scripts/build-images.js",
+    "test:contact": "node scripts/check-contact-function.js"
+  },
+  "devDependencies": {
+    "html-validate": "^10.4.0",
+    "serve": "^14.2.5",
+    "sharp": "^0.34.5"
+  }
+}

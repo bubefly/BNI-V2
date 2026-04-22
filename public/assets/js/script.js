@@ -5,6 +5,7 @@ const siteNav = document.querySelector("#site-nav");
 const revealItems = document.querySelectorAll(".reveal");
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
+const formStartedAt = Date.now();
 
 if (window.location.hash) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -69,6 +70,8 @@ if (contactForm && formStatus) {
       contact: String(formData.get("contact") || "").trim(),
       requestType: String(formData.get("requestType") || "").trim(),
       message: String(formData.get("message") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
+      elapsedMs: Date.now() - formStartedAt,
     };
 
     if (!payload.name || !payload.contact || !payload.requestType || !payload.message) {
@@ -77,6 +80,7 @@ if (contactForm && formStatus) {
     }
 
     const submitButton = contactForm.querySelector('button[type="submit"]');
+    const submitButtonText = submitButton ? submitButton.textContent : "";
     const endpoint = contactForm.dataset.endpoint || "/api/contact";
 
     formStatus.textContent = "Transmission en cours...";
@@ -111,7 +115,7 @@ if (contactForm && formStatus) {
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.textContent = "Transmettre la demande";
+        submitButton.textContent = submitButtonText || "Transmettre";
       }
     }
   });

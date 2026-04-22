@@ -10,6 +10,7 @@
   <title>BNI | Blue Network Initiative</title>
   <link rel="icon" type="image/png" href="assets/images/brand/logo.png">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add("js-enabled");</script>
 </head>
 <body>
   <div class="page-shell">
@@ -40,7 +41,25 @@
     <main>
       <section class="hero reveal" id="accueil">
         <div class="hero-media" aria-hidden="true">
-          <img src="assets/images/places/bni-building.png" alt="">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="
+                assets/images/places/bni-building-960.webp 960w,
+                assets/images/places/bni-building-1400.webp 1400w,
+                assets/images/places/bni-building-1900.webp 1900w
+              "
+              sizes="(max-width: 760px) 100vw, 72vw"
+            >
+            <img
+              src="assets/images/places/bni-building.png"
+              alt=""
+              width="1672"
+              height="941"
+              fetchpriority="high"
+              decoding="async"
+            >
+          </picture>
         </div>
 
         <div class="hero-logo-plate" aria-hidden="true">
@@ -60,14 +79,14 @@
           </div>
         </div>
 
-        <div class="hero-status" aria-label="Statut BNI">
-          <span>24/7</span>
-          <span>Réseau vérifié</span>
-          <span>Canal serveur</span>
-        </div>
+        <ul class="hero-status">
+          <li>24/7</li>
+          <li>Réseau vérifié</li>
+          <li>Canal serveur</li>
+        </ul>
       </section>
 
-      <section class="signal-strip reveal" aria-label="Signaux actifs">
+      <section class="signal-strip reveal">
         <span>Connecter</span>
         <span>Négocier</span>
         <span>Verrouiller</span>
@@ -85,7 +104,7 @@
             <span class="module-index">01</span>
             <h3>BNI Connect</h3>
             <p>Rendez-vous, briefs, contrats et demandes urgentes passent ici.</p>
-            <ul class="tag-list" aria-label="Capacités BNI Connect">
+            <ul class="tag-list">
               <li>Prise de contact</li>
               <li>Priorisation</li>
               <li>Suivi court</li>
@@ -99,7 +118,7 @@
             <span class="module-index">02</span>
             <h3>BNI Linked</h3>
             <p>Relations, réputation et alliances sont suivies sur la durée.</p>
-            <ul class="tag-list" aria-label="Capacités BNI Linked">
+            <ul class="tag-list">
               <li>Réseau privé</li>
               <li>Cartographie</li>
               <li>Signal social</li>
@@ -149,7 +168,14 @@
 
         <div class="agent-grid">
           <article class="agent-card">
-            <img src="assets/images/team/mia.png" alt="Portrait de Mia Dale" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/mia-520.webp 520w, assets/images/team/mia-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/mia.png" alt="Portrait de Mia Dale" width="1118" height="1028" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
               <span>PDG</span>
               <h3>Mia Dale</h3>
@@ -158,7 +184,14 @@
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/lucy.png" alt="Portrait de Lucy Birds" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/lucy-520.webp 520w, assets/images/team/lucy-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/lucy.png" alt="Portrait de Lucy Birds" width="1186" height="1006" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
               <span>Co-PDG</span>
               <h3>Lucy Birds</h3>
@@ -167,7 +200,14 @@
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/muck.png" alt="Portrait de Michel Muck" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/muck-520.webp 520w, assets/images/team/muck-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/muck.png" alt="Portrait de Michel Muck" width="679" height="682" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
               <span>Direction</span>
               <h3>Michel Muck</h3>
@@ -176,72 +216,114 @@
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/jude.png" alt="Portrait de Jude Birds" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/jude-520.webp 520w, assets/images/team/jude-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/jude.png" alt="Portrait de Jude Birds" width="685" height="701" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
-              <span>R&D</span>
+              <span>R&amp;D</span>
               <h3>Jude Birds</h3>
               <p>Coordonne les missions sensibles, la logistique de contact et les activations terrain rapides.</p>
             </div>
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/riley.png" alt="Portrait de Riley Green" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/riley-520.webp 520w, assets/images/team/riley-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/riley.png" alt="Portrait de Riley Green" width="2560" height="1440" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
-              <span>R&D</span>
+              <span>R&amp;D</span>
               <h3>Riley Green</h3>
-              <p>Encart réservé à un profil d'analyse, de veille et d'anticipation stratégique pour la BNI.</p>
+              <p>Analyse les signaux faibles, les risques réseau et les scénarios d'anticipation stratégique.</p>
             </div>
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/nadir.png" alt="Portrait de Nadir Delgado" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/nadir-520.webp 520w, assets/images/team/nadir-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/nadir.png" alt="Portrait de Nadir Delgado" width="7680" height="4320" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
               <span>Marketing</span>
               <h3>Nadir Delgado</h3>
-              <p>Encart réservé à un profil en charge des partenaires, des relais d'influence et des contacts premium.</p>
+              <p>Structure les partenaires, les relais d'influence et les contacts premium à forte valeur.</p>
             </div>
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/luna.png" alt="Portrait de Luna Miller" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/luna-520.webp 520w, assets/images/team/luna-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/luna.png" alt="Portrait de Luna Miller" width="1255" height="1017" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
-              <span>Marketing</span>
+              <span>Sécurité</span>
               <h3>Luna Miller</h3>
-              <p>Encart réservé à un référent sécurité pour la gestion des accès, des filtres et des situations sensibles.</p>
+              <p>Gère les accès, les filtres d'entrée et les protocoles de réponse en situation sensible.</p>
             </div>
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/dutch.png" alt="Portrait de Dutch Coleman" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/dutch-520.webp 520w, assets/images/team/dutch-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/dutch.png" alt="Portrait de Dutch Coleman" width="972" height="948" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
-              <span>Marketing</span>
+              <span>Terrain</span>
               <h3>Dutch Coleman</h3>
-              <p>Encart réservé à un opérateur mobile pour les coordinations rapides, les escortes et les activations urbaines.</p>
+              <p>Assure les coordinations rapides, les escortes et les activations urbaines à court préavis.</p>
             </div>
           </article>
 
           <article class="agent-card">
-            <img src="assets/images/team/trinity.png" alt="Portrait de Trinity" loading="lazy">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/images/team/trinity-520.webp 520w, assets/images/team/trinity-840.webp 840w"
+                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
+              >
+              <img src="assets/images/team/trinity.png" alt="Portrait de Trinity" width="1037" height="1027" loading="lazy" decoding="async">
+            </picture>
             <div class="agent-copy">
               <span>Support</span>
               <h3>Trinity</h3>
-              <p>Encart réservé à une cellule support pour le suivi client, les confirmations et la fluidité des demandes.</p>
+              <p>Suit les demandes, confirme les retours et maintient la fluidité entre contact et cellule.</p>
             </div>
           </article>
 
           <article class="agent-card is-placeholder">
             <div class="agent-placeholder" aria-hidden="true">Portrait à venir</div>
             <div class="agent-copy">
-              <span>R&D</span>
+              <span>R&amp;D</span>
               <h3>Karl Debord</h3>
-              <p>Renforce la cellule R&D avec une approche orientée prototypes, itérations rapides et solutions techniques avancées.</p>
+              <p>Renforce la cellule R&amp;D avec une approche orientée prototypes, itérations rapides et solutions techniques avancées.</p>
             </div>
           </article>
 
           <article class="agent-card is-placeholder">
             <div class="agent-placeholder" aria-hidden="true">Portrait à venir</div>
             <div class="agent-copy">
-              <span>R&D</span>
+              <span>R&amp;D</span>
               <h3>Lucas Varga</h3>
               <p>Développe les outils, les systèmes de support et les innovations internes qui renforcent la réactivité de la BNI.</p>
             </div>
@@ -267,6 +349,11 @@
 
         <div class="contact-layout">
           <form class="contact-form" data-contact-form data-endpoint="/api/contact">
+            <label class="form-honeypot" aria-hidden="true">
+              <span>Site web</span>
+              <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </label>
+
             <label>
               <span>Identifiant</span>
               <input type="text" name="name" placeholder="Nom / pseudo" required>
