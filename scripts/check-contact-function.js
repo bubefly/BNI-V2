@@ -10,7 +10,19 @@ const baseEvent = {
 
 const run = async () => {
   process.env.ALLOWED_ORIGINS = "https://example.netlify.app";
+  delete process.env.URL;
+  delete process.env.DEPLOY_PRIME_URL;
   delete process.env.DISCORD_WEBHOOK_URL;
+
+  const forbiddenOriginResponse = await handler({
+    headers: {
+      origin: "https://evil.example",
+      "x-nf-client-connection-ip": "127.0.0.9",
+    },
+    httpMethod: "POST",
+    body: "{}",
+  });
+  assert.equal(forbiddenOriginResponse.statusCode, 403);
 
   const methodResponse = await handler({
     ...baseEvent,
@@ -25,6 +37,24 @@ const run = async () => {
     body: "{",
   });
   assert.equal(invalidJsonResponse.statusCode, 400);
+
+  const tooFastResponse = await handler({
+    ...baseEvent,
+    headers: {
+      ...baseEvent.headers,
+      "x-nf-client-connection-ip": "127.0.0.2",
+    },
+    httpMethod: "POST",
+    body: JSON.stringify({
+      name: "Mia",
+      contact: "discord",
+      requestType: "Question",
+      message: "Test",
+      website: "",
+      elapsedMs: 200,
+    }),
+  });
+  assert.equal(tooFastResponse.statusCode, 400);
 
   const honeypotResponse = await handler({
     ...baseEvent,

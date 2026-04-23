@@ -9,11 +9,33 @@ const MAX_BODY_LENGTH = 4096;
 const MAX_FIELD_LENGTH = 120;
 const MAX_MESSAGE_LENGTH = 1024;
 const MIN_FORM_ELAPSED_MS = 1200;
-const RATE_LIMIT_WINDOW_MS = Number(process.env.CONTACT_RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000);
-const RATE_LIMIT_MAX = Number(process.env.CONTACT_RATE_LIMIT_MAX || 5);
+const DEFAULT_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const DEFAULT_RATE_LIMIT_MAX = 5;
+const DEFAULT_RATE_LIMIT_STORE_MAX = 5000;
 const REQUEST_TYPES = new Set(["Rendez-vous", "Question", "Mise en relation", "Autre"]);
 const DISCORD_HOSTS = new Set(["discord.com", "discordapp.com", "canary.discord.com", "ptb.discord.com"]);
+const LOCAL_ALLOWED_ORIGINS = [
+  "http://localhost:8888",
+  "http://127.0.0.1:8888",
+  "http://localhost:3999",
+  "http://127.0.0.1:3999",
+];
 const rateLimitStore = new Map();
+
+const parsePositiveInteger = (value, fallback) => {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+};
+
+const RATE_LIMIT_WINDOW_MS = parsePositiveInteger(
+  process.env.CONTACT_RATE_LIMIT_WINDOW_MS,
+  DEFAULT_RATE_LIMIT_WINDOW_MS
+);
+const RATE_LIMIT_MAX = parsePositiveInteger(process.env.CONTACT_RATE_LIMIT_MAX, DEFAULT_RATE_LIMIT_MAX);
+const RATE_LIMIT_STORE_MAX = parsePositiveInteger(
+  process.env.CONTACT_RATE_LIMIT_STORE_MAX,
+  DEFAULT_RATE_LIMIT_STORE_MAX
+);
 
 const getHeader = (headers, name) => {
   const target = name.toLowerCase();
@@ -43,7 +65,12 @@ const getAllowedOrigins = () => {
     .map((origin) => normalizeOrigin(origin || ""))
     .filter(Boolean);
 
-  return [...new Set([...configured, ...netlifyOrigins])];
+  const localOrigins =
+    process.env.NETLIFY_DEV === "true" || process.env.ALLOW_LOCAL_ORIGINS === "true"
+      ? LOCAL_ALLOWED_ORIGINS
+      : [];
+
+  return [...new Set([...configured, ...netlifyOrigins, ...localOrigins])];
 };
 
 const isAllowedOrigin = (origin) => {
@@ -54,7 +81,7 @@ const isAllowedOrigin = (origin) => {
   }
 
   const allowedOrigins = getAllowedOrigins();
-  return allowedOrigins.length === 0 || allowedOrigins.includes(normalizedOrigin);
+  return allowedOrigins.includes(normalizedOrigin);
 };
 
 const buildHeaders = (origin) => {
@@ -93,17 +120,40 @@ const getClientKey = (event) => {
   );
 };
 
+const pruneRateLimitStore = (now) => {
+  for (const [key, value] of rateLimitStore.entries()) {
+    if (value.resetAt <= now) {
+      rateLimitStore.delete(key);
+    }
+  }
+
+  while (rateLimitStore.size > RATE_LIMIT_STORE_MAX) {
+    const oldestKey = rateLimitStore.keys().next().value;
+
+    if (!oldestKey) {
+      return;
+    }
+
+    rateLimitStore.delete(oldestKey);
+  }
+};
+
 const isRateLimited = (clientKey) => {
   const now = Date.now();
+
+  pruneRateLimitStore(now);
+
   const current = rateLimitStore.get(clientKey) || { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
 
   if (current.resetAt <= now) {
     rateLimitStore.set(clientKey, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    pruneRateLimitStore(now);
     return false;
   }
 
   current.count += 1;
   rateLimitStore.set(clientKey, current);
+  pruneRateLimitStore(now);
   return current.count > RATE_LIMIT_MAX;
 };
 
