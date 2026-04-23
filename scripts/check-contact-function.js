@@ -76,8 +76,8 @@ const run = async () => {
     body: JSON.stringify({
       name: "Mia",
       contact: "discord",
-      requestType: "Question",
-      message: "Test",
+      requestType: "Achat catalogue",
+      message: "Demande drone",
       website: "",
       elapsedMs: 2000,
     }),

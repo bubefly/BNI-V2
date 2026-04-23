@@ -5,41 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="BNI, cellule de coordination privée pour rendez-vous, alliances et opérations sensibles."
+    content="BNI, entreprise de plateformes, reseaux de connaissances, formulaires, catalogue d'objets et services hologrammes."
   >
-  <title>BNI | Blue Network Initiative</title>
+  <title>BNI | Plateformes et catalogue</title>
   <link rel="icon" type="image/png" href="assets/images/brand/logo.png">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script>document.documentElement.classList.add("js-enabled");</script>
+  <script>document.documentElement.classList.add("js-enabled", "intro-active");</script>
 </head>
 <body>
+  <div class="intro-overlay" aria-hidden="true">
+    <div class="intro-frame">
+      <span class="intro-kicker">BNI / SYSTEM WAKE</span>
+      <img src="assets/images/brand/logo.png" alt="">
+      <span class="intro-line"></span>
+    </div>
+  </div>
+
   <div class="page-shell">
     <header class="topbar">
-      <a class="brand" href="#accueil" aria-label="Retour à l'accueil">
-        <span class="brand-mark">
-          <img id="site-logo" src="assets/images/brand/logo.png" alt="Logo BNI">
-          <span class="brand-fallback" aria-hidden="true">BNI</span>
-        </span>
-        <span class="brand-copy">
-          <strong>BNI</strong>
-          <span>Blue Network Initiative</span>
-        </span>
-      </a>
-
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         Menu
       </button>
 
       <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-        <a href="#circuits">Circuits</a>
-        <a href="#protocoles">Protocoles</a>
-        <a href="#cellule">Cellule</a>
-        <a class="nav-cta" href="#contact">Intake</a>
+        <a href="#plateformes">Plateformes</a>
+        <a href="#reseau">Réseau</a>
+        <a href="#catalogue">Catalogue</a>
+        <a href="#cellule">Équipe</a>
+        <a class="nav-cta" href="#contact">Demande</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero reveal" id="accueil">
+      <section class="hero reveal" id="accueil" data-motion-area>
         <div class="hero-media" aria-hidden="true">
           <picture>
             <source
@@ -62,53 +60,44 @@
           </picture>
         </div>
 
-        <div class="hero-logo-plate" aria-hidden="true">
-          <img src="assets/images/brand/logo.png" alt="">
+        <div class="hero-network" aria-hidden="true">
+          <span class="signal-line signal-line-a"></span>
+          <span class="signal-line signal-line-b"></span>
+          <span class="signal-line signal-line-c"></span>
+          <span class="signal-line signal-line-d"></span>
         </div>
 
         <div class="hero-content">
-          <p class="eyebrow">Interface privée / 2036</p>
-          <h1>BNI</h1>
+          <p class="eyebrow">Entreprise réseau / 2036</p>
+          <div class="hero-identity">
+            <img src="assets/images/brand/logo.png" alt="Logo BNI">
+          </div>
           <p class="hero-text">
-            Coordination froide pour rendez-vous, alliances et opérations sensibles.
+            Plateformes de formulaires, réseau de connaissances, catalogue d'objets et services hologrammes pour clients connectés.
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Ouvrir une demande</a>
-            <a class="button button-secondary" href="#cellule">Voir la cellule</a>
+            <a class="button button-primary" href="#catalogue">Voir le catalogue</a>
+            <a class="button button-secondary" href="#plateformes">Ouvrir les sites</a>
           </div>
         </div>
 
-        <ul class="hero-status">
-          <li>24/7</li>
-          <li>Réseau vérifié</li>
-          <li>Canal serveur</li>
-        </ul>
       </section>
 
-      <section class="signal-strip reveal">
-        <span>Connecter</span>
-        <span>Négocier</span>
-        <span>Verrouiller</span>
-        <span>Relancer</span>
-      </section>
-
-      <section class="section section-dark reveal" id="circuits">
+      <section class="section section-dark reveal" id="plateformes">
         <div class="section-head">
-          <p class="section-tag">Circuits</p>
-          <h2>Deux entrées. Une seule cellule.</h2>
+          <p class="section-tag">Plateformes</p>
+          <h2>Deux sites actifs pour capter et relier.</h2>
+          <p>
+            La BNI centralise les demandes avec Connect et transforme les connaissances en réseau structuré avec Linked.
+          </p>
         </div>
 
         <div class="module-grid">
           <article class="module module-blue">
             <span class="module-index">01</span>
             <h3>BNI Connect</h3>
-            <p>Rendez-vous, briefs, contrats et demandes urgentes passent ici.</p>
-            <ul class="tag-list">
-              <li>Prise de contact</li>
-              <li>Priorisation</li>
-              <li>Suivi court</li>
-            </ul>
+            <p>Site de formulaires pour remplir des demandes, répondre à des questions de vie et préparer un dossier clair.</p>
             <a class="module-link" href="https://bniconnect.netlify.app/" target="_blank" rel="noopener noreferrer">
               Ouvrir Connect
             </a>
@@ -117,12 +106,7 @@
           <article class="module module-light">
             <span class="module-index">02</span>
             <h3>BNI Linked</h3>
-            <p>Relations, réputation et alliances sont suivies sur la durée.</p>
-            <ul class="tag-list">
-              <li>Réseau privé</li>
-              <li>Cartographie</li>
-              <li>Signal social</li>
-            </ul>
+            <p>Site de réseau où chaque connaissance devient un point relié aux autres pour créer une carte neuronale.</p>
             <a class="module-link" href="https://bni-linked.netlify.app/" target="_blank" rel="noopener noreferrer">
               Ouvrir Linked
             </a>
@@ -130,40 +114,148 @@
         </div>
       </section>
 
-      <section class="section section-light reveal" id="protocoles">
+      <section class="section section-light reveal" id="reseau">
         <div class="section-head">
-          <p class="section-tag">Protocoles</p>
-          <h2>Ce que la BNI active.</h2>
+          <p class="section-tag">Réseau</p>
+          <h2>Des connaissances qui deviennent une carte exploitable.</h2>
+          <p>
+            BNI Linked sert à créer un réseau de personnes, de liens et de points pour visualiser les relations importantes.
+          </p>
         </div>
 
-        <div class="protocol-list">
-          <article class="protocol-row">
-            <span>01</span>
-            <h3>Triage</h3>
-            <p>On identifie le bon niveau de priorité.</p>
+        <div class="network-layout">
+          <div class="network-map" aria-hidden="true">
+            <svg class="network-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M50 50 L22 22 L80 20 L50 50 L17 74 L78 78 L50 50 L90 58" />
+              <path d="M22 22 L17 74 L78 78 L80 20 L22 22" />
+              <path d="M17 74 L50 50 L80 20" />
+            </svg>
+            <span class="network-node node-main">BNI</span>
+            <span class="network-node node-a">A</span>
+            <span class="network-node node-b">B</span>
+            <span class="network-node node-c">C</span>
+            <span class="network-node node-d">D</span>
+            <span class="network-node node-e">E</span>
+          </div>
+
+          <div class="network-steps">
+            <article class="network-step">
+              <span>01</span>
+              <h3>Ajouter</h3>
+              <p>Une connaissance, un contact ou un relais entre dans le réseau avec son contexte.</p>
+            </article>
+            <article class="network-step">
+              <span>02</span>
+              <h3>Relier</h3>
+              <p>Les liens sont posés entre les profils pour faire apparaître les chemins utiles.</p>
+            </article>
+            <article class="network-step">
+              <span>03</span>
+              <h3>Valoriser</h3>
+              <p>Les points permettent de mesurer l'importance d'un contact ou d'un groupe de contacts.</p>
+            </article>
+            <article class="network-step">
+              <span>04</span>
+              <h3>Activer</h3>
+              <p>La BNI s'appuie sur la carte pour orienter les demandes, les ventes et les services.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-catalog reveal" id="catalogue">
+        <div class="section-head">
+          <p class="section-tag">Catalogue</p>
+          <h2>Objets, formulaires et services BNI.</h2>
+          <p>
+            Catalogue inspiré de la fiche BNI : véhicules, tablettes, drones, hologrammes, formulaires et prestations sur devis.
+          </p>
+        </div>
+
+        <div class="catalog-grid">
+          <article class="catalog-card">
+            <div class="catalog-visual visual-segway" aria-hidden="true"></div>
+            <span class="catalog-kind">Véhicule</span>
+            <h3>Segway</h3>
+            <p class="catalog-price">2 000 $</p>
+            <p class="catalog-points">3 500 points</p>
           </article>
-          <article class="protocol-row">
-            <span>02</span>
-            <h3>Liaison</h3>
-            <p>On connecte les bons interlocuteurs.</p>
+
+          <article class="catalog-card">
+            <div class="catalog-visual visual-scooter" aria-hidden="true"></div>
+            <span class="catalog-kind">Véhicule</span>
+            <h3>Trottinette</h3>
+            <p class="catalog-price">1 000 $</p>
+            <p class="catalog-points">2 500 points</p>
           </article>
-          <article class="protocol-row">
-            <span>03</span>
-            <h3>Activation</h3>
-            <p>On prépare le rendez-vous, le relais ou l'opération.</p>
+
+          <article class="catalog-card">
+            <div class="catalog-visual visual-console" aria-hidden="true"></div>
+            <span class="catalog-kind">Tablette</span>
+            <h3>BNI Game</h3>
+            <p class="catalog-price">2 000 $</p>
           </article>
-          <article class="protocol-row">
-            <span>04</span>
-            <h3>Trace</h3>
-            <p>On garde le fil jusqu'à résolution.</p>
+
+          <article class="catalog-card">
+            <div class="catalog-visual visual-umbra" aria-hidden="true"></div>
+            <span class="catalog-kind">Tablette</span>
+            <h3>Umbra Game</h3>
+            <p class="catalog-price">4 000 $</p>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-visual visual-laptop" aria-hidden="true"></div>
+            <span class="catalog-kind">Connect</span>
+            <h3>Formulaires</h3>
+            <p class="catalog-price">0 $</p>
+          </article>
+
+          <article class="catalog-card">
+            <div class="catalog-visual visual-custom" aria-hidden="true"></div>
+            <span class="catalog-kind">Objets</span>
+            <h3>Personnalisées</h3>
+            <p class="catalog-price">Sur devis</p>
+          </article>
+
+          <article class="catalog-card catalog-card-wide">
+            <div class="catalog-visual visual-drone" aria-hidden="true"></div>
+            <span class="catalog-kind">Matériel</span>
+            <h3>Drones</h3>
+            <p class="catalog-price">40 000 $</p>
+            <p class="catalog-points">10 000 points</p>
+          </article>
+
+          <article class="catalog-card catalog-card-wide">
+            <div class="catalog-visual visual-hologram" aria-hidden="true"></div>
+            <span class="catalog-kind">Installation</span>
+            <h3>Hologrammes</h3>
+            <p class="catalog-price">75 000 $ à 150 000 $</p>
+          </article>
+        </div>
+
+        <div class="service-board">
+          <article>
+            <span>Service hologrammes</span>
+            <strong>SMS → 55523204</strong>
+          </article>
+          <article>
+            <span>Service marketing</span>
+            <strong>SMS → 5556904</strong>
+          </article>
+          <article>
+            <span>Service communication</span>
+            <strong>SMS → 55596323</strong>
           </article>
         </div>
       </section>
 
       <section class="section section-roster reveal" id="cellule">
         <div class="section-head">
-          <p class="section-tag">Cellule</p>
-          <h2>Présences actives.</h2>
+          <p class="section-tag">Équipe</p>
+          <h2>Cellule entreprise.</h2>
+          <p>
+            Direction, réseau, recherche, sécurité, terrain et support travaillent ensemble pour faire tourner les sites et les services.
+          </p>
         </div>
 
         <div class="agent-grid">
@@ -179,7 +271,7 @@
             <div class="agent-copy">
               <span>PDG</span>
               <h3>Mia Dale</h3>
-              <p>Pilote la stratégie globale et les relais corporate de la BNI dans les zones à haute valeur.</p>
+              <p>Pilote la stratégie globale, les plateformes BNI et les décisions commerciales à forte valeur.</p>
             </div>
           </article>
 
@@ -195,7 +287,7 @@
             <div class="agent-copy">
               <span>Co-PDG</span>
               <h3>Lucy Birds</h3>
-              <p>Supervise les rendez-vous, l'aiguillage des demandes et la résolution des points de friction.</p>
+              <p>Supervise les demandes Connect, les retours client et l'organisation des prestations BNI.</p>
             </div>
           </article>
 
@@ -211,7 +303,7 @@
             <div class="agent-copy">
               <span>Direction</span>
               <h3>Michel Muck</h3>
-              <p>Maintient la cartographie du réseau, les liens privilégiés et les signaux d'opportunité.</p>
+              <p>Maintient les relations clés, les opportunités Linked et les points stratégiques du réseau.</p>
             </div>
           </article>
 
@@ -227,7 +319,7 @@
             <div class="agent-copy">
               <span>R&amp;D</span>
               <h3>Jude Birds</h3>
-              <p>Coordonne les missions sensibles, la logistique de contact et les activations terrain rapides.</p>
+              <p>Coordonne les prototypes, les activations terrain et les objets techniques du catalogue.</p>
             </div>
           </article>
 
@@ -243,7 +335,7 @@
             <div class="agent-copy">
               <span>R&amp;D</span>
               <h3>Riley Green</h3>
-              <p>Analyse les signaux faibles, les risques réseau et les scénarios d'anticipation stratégique.</p>
+              <p>Analyse les signaux du réseau, les scores Linked et les besoins à transformer en service.</p>
             </div>
           </article>
 
@@ -259,7 +351,7 @@
             <div class="agent-copy">
               <span>Marketing</span>
               <h3>Nadir Delgado</h3>
-              <p>Structure les partenaires, les relais d'influence et les contacts premium à forte valeur.</p>
+              <p>Structure les offres, les ventes, les partenaires et les relais d'influence BNI.</p>
             </div>
           </article>
 
@@ -275,7 +367,7 @@
             <div class="agent-copy">
               <span>Sécurité</span>
               <h3>Luna Miller</h3>
-              <p>Gère les accès, les filtres d'entrée et les protocoles de réponse en situation sensible.</p>
+              <p>Gère les accès, les filtres d'entrée, les dossiers sensibles et les garanties client.</p>
             </div>
           </article>
 
@@ -291,7 +383,7 @@
             <div class="agent-copy">
               <span>Terrain</span>
               <h3>Dutch Coleman</h3>
-              <p>Assure les coordinations rapides, les escortes et les activations urbaines à court préavis.</p>
+              <p>Assure les livraisons, les installations, les escortes et les interventions rapides.</p>
             </div>
           </article>
 
@@ -307,7 +399,7 @@
             <div class="agent-copy">
               <span>Support</span>
               <h3>Trinity</h3>
-              <p>Suit les demandes, confirme les retours et maintient la fluidité entre contact et cellule.</p>
+              <p>Suit les demandes, confirme les retours et maintient le lien entre plateforme, client et cellule.</p>
             </div>
           </article>
 
@@ -316,7 +408,7 @@
             <div class="agent-copy">
               <span>R&amp;D</span>
               <h3>Karl Debord</h3>
-              <p>Renforce la cellule R&amp;D avec une approche orientée prototypes, itérations rapides et solutions techniques avancées.</p>
+              <p>Renforce les prototypes, les itérations rapides et les solutions techniques internes.</p>
             </div>
           </article>
 
@@ -325,7 +417,7 @@
             <div class="agent-copy">
               <span>R&amp;D</span>
               <h3>Lucas Varga</h3>
-              <p>Développe les outils, les systèmes de support et les innovations internes qui renforcent la réactivité de la BNI.</p>
+              <p>Développe les outils, les systèmes de support et les innovations qui améliorent la réactivité BNI.</p>
             </div>
           </article>
 
@@ -342,9 +434,9 @@
 
       <section class="section section-contact reveal" id="contact">
         <div class="section-head">
-          <p class="section-tag">Intake</p>
-          <h2>Déposer une demande.</h2>
-          <p>Un message court. Un canal de retour. Le reste passe en cellule.</p>
+          <p class="section-tag">Demande</p>
+          <h2>Commander, rejoindre ou activer.</h2>
+          <p>Une demande claire. Un canal de retour. La BNI oriente vers Connect, Linked, catalogue ou service.</p>
         </div>
 
         <div class="contact-layout">
@@ -368,9 +460,13 @@
               <span>Objet</span>
               <select name="requestType" required>
                 <option value="">Sélectionner</option>
-                <option value="Rendez-vous">Rendez-vous</option>
-                <option value="Question">Question</option>
-                <option value="Mise en relation">Mise en relation</option>
+                <option value="BNI Connect">BNI Connect</option>
+                <option value="BNI Linked">BNI Linked</option>
+                <option value="Achat catalogue">Achat catalogue</option>
+                <option value="Service hologrammes">Service hologrammes</option>
+                <option value="Service marketing">Service marketing</option>
+                <option value="Service communication">Service communication</option>
+                <option value="Objet personnalise">Objet personnalisé</option>
                 <option value="Autre">Autre</option>
               </select>
             </label>
@@ -380,7 +476,7 @@
               <textarea
                 name="message"
                 rows="5"
-                placeholder="Contexte, disponibilité, niveau de priorité."
+                placeholder="Site visé, produit, service, budget, points, urgence ou détails utiles."
                 required
               ></textarea>
             </label>
@@ -388,23 +484,13 @@
             <button class="button button-primary" type="submit">Transmettre</button>
             <p class="form-status" data-form-status aria-live="polite"></p>
           </form>
-
-          <aside class="intake-panel" aria-label="Informations demandées">
-            <span class="intake-code">BNI / INTAKE</span>
-            <ol>
-              <li>Qui tu es</li>
-              <li>Comment te répondre</li>
-              <li>Ce que tu veux déclencher</li>
-              <li>Le niveau d'urgence</li>
-            </ol>
-          </aside>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>BNI // Blue Network Initiative</p>
-      <p>Coordination privée / 2036</p>
+      <p>BNI // Entreprise réseau</p>
+      <p>Plateformes, réseaux, catalogue et services / 2036</p>
     </footer>
   </div>
 

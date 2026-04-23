@@ -12,7 +12,19 @@ const MIN_FORM_ELAPSED_MS = 1200;
 const DEFAULT_RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const DEFAULT_RATE_LIMIT_MAX = 5;
 const DEFAULT_RATE_LIMIT_STORE_MAX = 5000;
-const REQUEST_TYPES = new Set(["Rendez-vous", "Question", "Mise en relation", "Autre"]);
+const REQUEST_TYPES = new Set([
+  "Rendez-vous",
+  "Question",
+  "Mise en relation",
+  "BNI Connect",
+  "BNI Linked",
+  "Achat catalogue",
+  "Service hologrammes",
+  "Service marketing",
+  "Service communication",
+  "Objet personnalise",
+  "Autre",
+]);
 const DISCORD_HOSTS = new Set(["discord.com", "discordapp.com", "canary.discord.com", "ptb.discord.com"]);
 const LOCAL_ALLOWED_ORIGINS = [
   "http://localhost:8888",
