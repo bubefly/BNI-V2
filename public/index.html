@@ -7,20 +7,12 @@
     name="description"
     content="BNI, entreprise de plateformes, reseaux de connaissances, formulaires, catalogue d'objets et services hologrammes."
   >
-  <title>BNI | Plateformes et catalogue</title>
+  <title>BNI | Notre site web</title>
   <link rel="icon" type="image/png" href="assets/images/brand/logo.png">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script>document.documentElement.classList.add("js-enabled", "intro-active");</script>
+  <script>document.documentElement.classList.add("js-enabled");</script>
 </head>
 <body>
-  <div class="intro-overlay" aria-hidden="true">
-    <div class="intro-frame">
-      <span class="intro-kicker">BNI / SYSTEM WAKE</span>
-      <img src="assets/images/brand/logo.png" alt="">
-      <span class="intro-line"></span>
-    </div>
-  </div>
-
   <div class="page-shell">
     <header class="topbar">
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -29,7 +21,6 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
         <a href="#plateformes">Plateformes</a>
-        <a href="#reseau">Réseau</a>
         <a href="#catalogue">Catalogue</a>
         <a href="#cellule">Équipe</a>
         <a class="nav-cta" href="#contact">Demande</a>
@@ -37,7 +28,7 @@
     </header>
 
     <main>
-      <section class="hero reveal" id="accueil" data-motion-area>
+      <section class="hero reveal" id="accueil">
         <div class="hero-media" aria-hidden="true">
           <picture>
             <source
@@ -114,55 +105,6 @@
         </div>
       </section>
 
-      <section class="section section-light reveal" id="reseau">
-        <div class="section-head">
-          <p class="section-tag">Réseau</p>
-          <h2>Des connaissances qui deviennent une carte exploitable.</h2>
-          <p>
-            BNI Linked sert à créer un réseau de personnes, de liens et de points pour visualiser les relations importantes.
-          </p>
-        </div>
-
-        <div class="network-layout">
-          <div class="network-map" aria-hidden="true">
-            <svg class="network-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M50 50 L22 22 L80 20 L50 50 L17 74 L78 78 L50 50 L90 58" />
-              <path d="M22 22 L17 74 L78 78 L80 20 L22 22" />
-              <path d="M17 74 L50 50 L80 20" />
-            </svg>
-            <span class="network-node node-main">BNI</span>
-            <span class="network-node node-a">A</span>
-            <span class="network-node node-b">B</span>
-            <span class="network-node node-c">C</span>
-            <span class="network-node node-d">D</span>
-            <span class="network-node node-e">E</span>
-          </div>
-
-          <div class="network-steps">
-            <article class="network-step">
-              <span>01</span>
-              <h3>Ajouter</h3>
-              <p>Une connaissance, un contact ou un relais entre dans le réseau avec son contexte.</p>
-            </article>
-            <article class="network-step">
-              <span>02</span>
-              <h3>Relier</h3>
-              <p>Les liens sont posés entre les profils pour faire apparaître les chemins utiles.</p>
-            </article>
-            <article class="network-step">
-              <span>03</span>
-              <h3>Valoriser</h3>
-              <p>Les points permettent de mesurer l'importance d'un contact ou d'un groupe de contacts.</p>
-            </article>
-            <article class="network-step">
-              <span>04</span>
-              <h3>Activer</h3>
-              <p>La BNI s'appuie sur la carte pour orienter les demandes, les ventes et les services.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section section-catalog reveal" id="catalogue">
         <div class="section-head">
           <p class="section-tag">Catalogue</p>
@@ -217,7 +159,7 @@
             <p class="catalog-price">Sur devis</p>
           </article>
 
-          <article class="catalog-card catalog-card-wide">
+          <article class="catalog-card">
             <div class="catalog-visual visual-drone" aria-hidden="true"></div>
             <span class="catalog-kind">Matériel</span>
             <h3>Drones</h3>
@@ -225,7 +167,7 @@
             <p class="catalog-points">10 000 points</p>
           </article>
 
-          <article class="catalog-card catalog-card-wide">
+          <article class="catalog-card">
             <div class="catalog-visual visual-hologram" aria-hidden="true"></div>
             <span class="catalog-kind">Installation</span>
             <h3>Hologrammes</h3>
@@ -258,8 +200,18 @@
           </p>
         </div>
 
-        <div class="agent-grid">
-          <article class="agent-card">
+        <div class="team-jukebox" data-team-carousel>
+          <div class="team-filter-bar" role="tablist" aria-label="Filtrer l'equipe">
+            <button class="team-filter is-active" type="button" data-team-filter="all" role="tab" aria-selected="true">Tout</button>
+            <button class="team-filter" type="button" data-team-filter="communication" role="tab" aria-selected="false">Communication</button>
+            <button class="team-filter" type="button" data-team-filter="rd" role="tab" aria-selected="false">R&amp;D</button>
+            <button class="team-filter" type="button" data-team-filter="marketing" role="tab" aria-selected="false">Marketing</button>
+          </div>
+
+          <div class="team-carousel">
+            <button class="team-arrow team-arrow-prev" type="button" data-team-prev aria-label="Profil precedent">&lt;</button>
+            <div class="agent-track" tabindex="0" data-team-track aria-label="Carrousel equipe">
+              <article class="agent-card" data-team-category="communication">
             <picture>
               <source
                 type="image/webp"
@@ -275,7 +227,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="communication">
             <picture>
               <source
                 type="image/webp"
@@ -291,7 +243,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="communication">
             <picture>
               <source
                 type="image/webp"
@@ -307,7 +259,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="rd">
             <picture>
               <source
                 type="image/webp"
@@ -323,7 +275,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="rd">
             <picture>
               <source
                 type="image/webp"
@@ -339,7 +291,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="marketing">
             <picture>
               <source
                 type="image/webp"
@@ -355,7 +307,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="communication">
             <picture>
               <source
                 type="image/webp"
@@ -371,7 +323,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
+              <article class="agent-card" data-team-category="communication">
             <picture>
               <source
                 type="image/webp"
@@ -387,23 +339,7 @@
             </div>
           </article>
 
-          <article class="agent-card">
-            <picture>
-              <source
-                type="image/webp"
-                srcset="assets/images/team/trinity-520.webp 520w, assets/images/team/trinity-840.webp 840w"
-                sizes="(max-width: 760px) calc(100vw - 24px), 32vw"
-              >
-              <img src="assets/images/team/trinity.png" alt="Portrait de Trinity" width="1037" height="1027" loading="lazy" decoding="async">
-            </picture>
-            <div class="agent-copy">
-              <span>Support</span>
-              <h3>Trinity</h3>
-              <p>Suit les demandes, confirme les retours et maintient le lien entre plateforme, client et cellule.</p>
-            </div>
-          </article>
-
-          <article class="agent-card is-placeholder">
+              <article class="agent-card is-placeholder" data-team-category="rd">
             <div class="agent-placeholder" aria-hidden="true">Portrait à venir</div>
             <div class="agent-copy">
               <span>R&amp;D</span>
@@ -412,7 +348,7 @@
             </div>
           </article>
 
-          <article class="agent-card is-placeholder">
+              <article class="agent-card is-placeholder" data-team-category="rd">
             <div class="agent-placeholder" aria-hidden="true">Portrait à venir</div>
             <div class="agent-copy">
               <span>R&amp;D</span>
@@ -421,7 +357,7 @@
             </div>
           </article>
 
-          <article class="agent-card is-placeholder is-open-slot">
+              <article class="agent-card is-placeholder is-open-slot" data-team-category="communication">
             <div class="agent-placeholder" aria-hidden="true">Nouveau membre</div>
             <div class="agent-copy">
               <span>Nouveau membre</span>
@@ -429,6 +365,9 @@
               <p>Encart prévu pour intégrer un nouveau membre de l'équipe avec son portrait, son rôle et sa description.</p>
             </div>
           </article>
+            </div>
+            <button class="team-arrow team-arrow-next" type="button" data-team-next aria-label="Profil suivant">&gt;</button>
+          </div>
         </div>
       </section>
 

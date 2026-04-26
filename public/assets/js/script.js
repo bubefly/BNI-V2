@@ -1,56 +1,94 @@
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector("#site-nav");
 const revealItems = document.querySelectorAll(".reveal");
-const motionArea = document.querySelector("[data-motion-area]");
-const motionCards = document.querySelectorAll(".module, .catalog-card, .service-board article, .network-step");
-const introOverlay = document.querySelector(".intro-overlay");
 const scrollItems = document.querySelectorAll(
-  ".section-head, .module, .network-map, .network-step, .catalog-card, .service-board article, .agent-card, .contact-form"
+  ".section-head, .module, .catalog-card, .service-board article, .agent-card, .contact-form"
 );
 const contactForm = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
 const formStartedAt = Date.now();
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-// Intro courte : l'overlay initialise l'univers visuel puis libere vite l'interface.
-const finishIntro = () => {
-  document.documentElement.classList.add("intro-complete", "intro-done");
-
-  window.setTimeout(() => {
-    document.documentElement.classList.remove("intro-active");
-
-    if (introOverlay) {
-      introOverlay.remove();
-    }
-  }, prefersReducedMotion ? 0 : 460);
-};
-
-if (introOverlay) {
-  if (prefersReducedMotion) {
-    finishIntro();
-  } else {
-    window.setTimeout(finishIntro, 1180);
-  }
-} else {
-  document.documentElement.classList.remove("intro-active");
-}
+const teamCarousels = document.querySelectorAll("[data-team-carousel]");
 
 scrollItems.forEach((item, index) => {
   item.classList.add("scroll-item");
   item.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 56}ms`);
 
-  if (item.matches(".network-map, .agent-card, .contact-form")) {
+  if (item.matches(".agent-card, .contact-form")) {
     item.classList.add("reveal-scale");
-  }
-
-  if (item.matches(".network-step")) {
-    item.classList.add("reveal-side");
   }
 });
 
 if (window.location.hash) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+teamCarousels.forEach((carousel) => {
+  const track = carousel.querySelector("[data-team-track]");
+  const filters = Array.from(carousel.querySelectorAll("[data-team-filter]"));
+  const cards = Array.from(carousel.querySelectorAll("[data-team-category]"));
+  const prevButton = carousel.querySelector("[data-team-prev]");
+  const nextButton = carousel.querySelector("[data-team-next]");
+
+  if (!track || !cards.length) {
+    return;
+  }
+
+  const getVisibleCards = () => cards.filter((card) => !card.classList.contains("is-hidden"));
+
+  const updateArrows = () => {
+    const canScroll = track.scrollWidth > track.clientWidth + 2;
+
+    if (prevButton) {
+      prevButton.disabled = !canScroll || track.scrollLeft <= 2;
+    }
+
+    if (nextButton) {
+      nextButton.disabled = !canScroll || track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    }
+  };
+
+  const moveCarousel = (direction) => {
+    const visibleCards = getVisibleCards();
+    const cardWidth = visibleCards[0] ? visibleCards[0].getBoundingClientRect().width : track.clientWidth;
+
+    track.scrollBy({
+      left: direction * (cardWidth + 14),
+      behavior: "smooth",
+    });
+  };
+
+  filters.forEach((filterButton) => {
+    filterButton.addEventListener("click", () => {
+      const filter = filterButton.dataset.teamFilter || "all";
+
+      filters.forEach((button) => {
+        const isActive = button === filterButton;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+      });
+
+      cards.forEach((card) => {
+        const isVisible = filter === "all" || card.dataset.teamCategory === filter;
+        card.classList.toggle("is-hidden", !isVisible);
+      });
+
+      track.scrollTo({ left: 0, behavior: "smooth" });
+      window.setTimeout(updateArrows, 180);
+    });
+  });
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => moveCarousel(-1));
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => moveCarousel(1));
+  }
+
+  track.addEventListener("scroll", updateArrows, { passive: true });
+  window.addEventListener("resize", updateArrows);
+  updateArrows();
+});
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
@@ -104,40 +142,6 @@ if (siteNav) {
   }
 }
 
-if (motionArea && !prefersReducedMotion) {
-  motionArea.addEventListener("pointermove", (event) => {
-    const rect = motionArea.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-    motionArea.style.setProperty("--motion-x", `${Math.max(0, Math.min(100, x))}%`);
-    motionArea.style.setProperty("--motion-y", `${Math.max(0, Math.min(100, y))}%`);
-  });
-
-  motionArea.addEventListener("pointerleave", () => {
-    motionArea.style.setProperty("--motion-x", "50%");
-    motionArea.style.setProperty("--motion-y", "50%");
-  });
-}
-
-if (!prefersReducedMotion) {
-  motionCards.forEach((card) => {
-    card.addEventListener("pointermove", (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-      card.style.setProperty("--tilt-x", `${x * 4}deg`);
-      card.style.setProperty("--tilt-y", `${y * -4}deg`);
-    });
-
-    card.addEventListener("pointerleave", () => {
-      card.style.setProperty("--tilt-x", "0deg");
-      card.style.setProperty("--tilt-y", "0deg");
-    });
-  });
-}
-
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -159,7 +163,7 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-// Scroll reveal composant par composant : titres, cartes, carte reseau et formulaire.
+// Scroll reveal composant par composant : titres, cartes et formulaire.
 if ("IntersectionObserver" in window) {
   const itemObserver = new IntersectionObserver(
     (entries) => {
